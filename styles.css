@@ -38,6 +38,7 @@
 .btn:hover,
 .btn:active {
   opacity: var(--opacity-value);
+  
 }
 
 /* Header / Hero Styles */
@@ -701,7 +702,7 @@
   }
 }
 
-@media screen and (max-width: 575px) {
+@media screen and (max-width: 576px) {
   .faq .section-body .col1,
   .faq .section-body .col2 {
     padding: 0 4vw;
