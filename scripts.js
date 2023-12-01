@@ -1,40 +1,32 @@
-$(document).ready(function() {
-  const path = window.location.pathname;
-  if (path === "/") {
-    // Home Page
-    generate_quotes();
-  }})
-  
-  function generate_quotes() {
-    const carousel = $('#testimonial');
-    const loader = $('#testimonialLoader');
-  
-    $.ajax({
-      url: 'https://smileschool-api.hbtn.info/quotes',
-      method: 'GET',
-      success: function(data) {
-        const itemsHTML = data.map((quote, index) => {
-          const isActive = index === 0 ? 'active' : '';
-          return `
-            <div class='carousel-item px-5 ${isActive}'>
-              <div class='d-flex flex-column align-items-center flex-sm-row carousel-helper m-md-5'>
-                <img class='rounded-circle carousel-avatar ml-sm-5' src='${quote.pic_url}' width='210px'>
-                <div class='mx-sm-5'>
-                  <p class='px-2 mt-4 mt-md-0'>${quote.text}</p>
-                  <p class='font-weight-bold pl-2 pt-2 mb-1 align-self-start'>${quote.name}</p>
-                  <cite class='pl-2 align-self-start'>${quote.title}</cite>
-                </div>
-              </div>
-            </div>`;
-        }).join('');
-  
-        carousel.html(itemsHTML);
-        loader.remove();
-        carousel.removeClass('d-none');
-      },
-      error: function(jqXHR, textStatus, errorThrown) {
-        console.error('Error fetching quotes:', textStatus, errorThrown);
-        // Optionally, update the UI to inform the user
-      }
-    });
-  }  
+function createQuoteSlide({ pic_url, name, title, text }, isActive = false) {
+  return `
+    <div class="carousel-item ${isActive ? 'active' : ''}">
+      <div class="row mx-auto align-items-center">
+        <div class="col-12 col-sm-2 col-lg-2 offset-lg-1 text-center">
+          <img src="${pic_url}" alt="Carousel Pic" class="d-block align-self-center">
+        </div>
+        <div class="col-12 col-sm-7 offset-sm-2 col-lg-9 offset-lg-0">
+          <div class="quote-text">
+            <p class="text-white">${text}</p>
+            <h4 class="text-white font-weight-bold">${name}</h4>
+            <span class="text-white">${title}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+$(document).ready(function () {
+  const carouselInner = $('#carouselExampleControls .carousel-inner');
+  const loader = $('.loader');
+  loader.show();
+
+  $.get("https://smileschool-api.hbtn.info/quotes", function (data) {
+    loader.hide();
+    carouselInner.empty();
+
+    const slides = data.map((quote, index) => createQuoteSlide(quote, index === 0)).join('');
+    carouselInner.append(slides);
+  });
+});
