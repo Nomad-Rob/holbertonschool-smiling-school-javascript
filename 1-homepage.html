@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" id="homepage">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -41,6 +41,9 @@
       integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
       crossorigin="anonymous"
     />
+
+    <link rel="stylesheet" href="styles.css" />
+    <script src="scripts.js"></script>
   </head>
   <body class="body">
     <header class="header">
@@ -61,7 +64,7 @@
           </button>
           <a
             class="navbar-brand mx-auto d-flex flex-column flex-sm-row align-items-center mt-3"
-            href="homepage.html"
+            href="0-homepage.html"
           >
             <img
               src="images/smile_off.png"
@@ -79,12 +82,12 @@
           <div class="collapse navbar-collapse text-center mt-3" id="navbarNav">
             <ul class="navbar-nav ml-auto font-weight-bold">
               <li class="nav-item">
-                <a class="nav-link text-white px-1" href="courses.html"
+                <a class="nav-link text-white px-1" href="0-courses.html"
                   >COURSES</a
                 >
               </li>
               <li class="nav-item px-0 px-sm-5 py-2 py-sm-0">
-                <a class="nav-link text-white px-1" href="pricing.html"
+                <a class="nav-link text-white px-1" href="0-pricing.html"
                   >PRICING</a
                 >
               </li>
@@ -142,16 +145,12 @@
     <main class="main">
       <section class="quotes section d-flex align-items-center">
         <div class="container">
-          <!-- Loader -->
-          <div class="loader"></div>
           <div
             id="carouselExampleControls"
             class="carousel slide"
             data-ride="carousel"
           >
-            <div class="carousel-inner">
-              <!-- Slides will be inserted here -->
-            </div>
+            <div class="carousel-inner" id="carousel-items"></div>
             <a
               class="carousel-control-prev arrow-left"
               href="#carouselExampleControls"
@@ -181,6 +180,7 @@
           </div>
         </div>
       </section>
+      <section class="popular section d-flex align-items-center">
         <div class="container">
           <header class="section-header">
             <h2 class="text-center">
@@ -2001,6 +2001,5 @@
         </div>
       </div>
     </footer>
-    <script src="scripts.js"></script>
   </body>
 </html>
