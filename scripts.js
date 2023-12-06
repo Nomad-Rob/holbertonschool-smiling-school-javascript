@@ -403,6 +403,21 @@ $(document).ready(function () {
           },
         ];
 
+        /**
+         * Array of objects representing requests for courses.
+         * @typedef {Object} CourseRequest
+         * @property {string} url - The URL for the request.
+         * @property {Function} func - The function to be executed for the request.
+         * @property {string} id - The ID of the element to display the results.
+         */
+        let courseRequests = [
+          {
+            url: "https://smileschool-api.hbtn.info/courses",
+            func: displaySearchResultsAndBar,
+            id: "results-items",
+          },
+        ];
+        
         // END OF DYNAMIC CONTENT REQUESTS
         let $homepage = $("#homepage");
         let $pricing = $("#pricing");
@@ -420,3 +435,6 @@ $(document).ready(function () {
           requestData(request.url, request.func, request.id);
         }
       });
+
+      // COMPLETE!!!
+      
